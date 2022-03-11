@@ -1,12 +1,7 @@
 import { Document, model, Schema } from 'mongoose';
-import { Price } from '../types/price.type';
+import { Asset } from '../types/asset.type';
 
-export interface AssetDocument extends Document {
-    price: Price;
-    name: string;
-    location: string;
-    availability?: boolean;
-}
+export interface AssetDocument extends Document, Asset{}
 
 const AssetSchema: Schema = new Schema({
     price: {type: Object, required: true},
