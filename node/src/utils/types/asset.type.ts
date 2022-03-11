@@ -1,9 +1,12 @@
 import { Price } from "./price.type";
 
 export type Asset = {
-    price: Price;
     name: string;
     location: string;
-    availability?: boolean;
+    price?: Price | number;
+    available?: boolean;
 }
+
+type OptionalPick<T, K extends PropertyKey> = Pick<T, Extract<keyof T, K>>
+export type UpdatebleAssetProps = OptionalPick<Asset, "available" | "price">;
 

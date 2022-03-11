@@ -11,7 +11,13 @@ export async function getAssets(req: Request, res: Response) {
 
 export async function createAsset(req: Request, res: Response) {
     const { asset } = req.body;
-    await assetService.create(asset);
+    const newAsset = await assetService.create(asset);
+    return res.status(OK).send(newAsset);
+}
 
+export async function updateAsset(req: Request, res: Response) {
+    const { id } = req.params;
+    const { updateDetails } = req.body;
+    await assetService.update(id, updateDetails);
     return res.status(OK).send();
 }
