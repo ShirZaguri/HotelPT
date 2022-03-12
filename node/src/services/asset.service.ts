@@ -5,8 +5,8 @@ import { Types } from 'mongoose';
 
 
 export class assetService {
-    static getAll = async () => {
-        return await assets.find({});
+    static get = async (id: string) => {
+        return await assets.find(id ? { _id: new Types.ObjectId(id) } : {});
     };
 
     static create = async (asset: any) => {

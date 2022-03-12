@@ -2,10 +2,11 @@ import { Request, Response } from 'express';
 import StatusCodes from 'http-status-codes';
 import { assetService } from '@/services/asset.service';
 
-const { BAD_REQUEST, CREATED, OK } = StatusCodes;
+const { OK } = StatusCodes;
 
 export async function getAssets(req: Request, res: Response) {
-    const assets = await assetService.getAll();
+    const { id } = req.params;
+    const assets = await assetService.get(id);
     return res.status(OK).json({ assets });
 }
 

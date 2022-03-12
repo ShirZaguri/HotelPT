@@ -3,6 +3,7 @@ import { Router } from 'express';
 
 const assetRouter = Router();
 assetRouter.get('/', getAssets);
+assetRouter.get('/:id', getAssets);
 assetRouter.post('/', createAsset);
 assetRouter.patch('/:id', updateAsset);
 
